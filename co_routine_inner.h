@@ -49,9 +49,9 @@ struct stShareStack_t
 struct stCoRoutine_t
 {
 	stCoRoutineEnv_t *env;
-	pfn_co_routine_t pfn;
-	void *arg;
-	coctx_t ctx;
+	pfn_co_routine_t pfn; // 协程的执行指令
+	void *arg; // 执行指令的参数
+	coctx_t ctx; // 协成切换的上下文。协程私有
 
 	char cStart;
 	char cEnd;
@@ -62,7 +62,7 @@ struct stCoRoutine_t
 	void *pvEnv;
 
 	//char sRunStack[ 1024 * 128 ];
-	stStackMem_t* stack_mem;
+	stStackMem_t* stack_mem; // 协成私有栈。协成私有的东东：栈、寄存器组、上下文
 
 
 	//save satck buffer while confilct on same stack_buffer;
